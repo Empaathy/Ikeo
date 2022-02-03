@@ -9,12 +9,9 @@
 		{% endblock %}
 		{% block javascripts %}{% endblock %}
 	</head>
-	<body class="h-100">
-
+	<body>
 		{% include "admin/components/_nav.html.twig" %}
-		<main class="main-container">
-			<div class="container-fluid"> {% block body %}{% endblock %}
-				</div>
-			</main>
+		<div class="container pt-5"> {% block body %}{% endblock %}
+			</div>
 		</body>
 	</html>

@@ -6,14 +6,16 @@ use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/admin/category", name="admin_category_")
+ * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas le droit d'être ici")
  */
 class CategoryController extends AbstractController
 {
@@ -29,6 +31,7 @@ class CategoryController extends AbstractController
 
     /**
      * @Route("/new", name="new", methods={"GET", "POST"})
+     * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas le droit d'être ici")
      */
     public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
@@ -53,6 +56,7 @@ class CategoryController extends AbstractController
 
     /**
      * @Route("/{slug}/edit", name="edit", methods={"GET", "POST"})
+     * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas le droit d'être ici")
      */
     public function edit(Request $request, Category $category, EntityManagerInterface $entityManager): Response
     {
@@ -72,7 +76,8 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="delete", methods={"POST"})
+     * @Route("/{slug}/delete", name="delete", methods={"POST"})
+     * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas le droit d'être ici")
      */
     public function delete(Request $request, Category $category, EntityManagerInterface $entityManager): Response
     {

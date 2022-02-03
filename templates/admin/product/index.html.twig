@@ -1,43 +1,39 @@
 {% extends 'admin/base.html.twig' %}
 
-{% block title %}Product index
+{% block title %}Admin - Tous les
 {% endblock %}
 
 {% block body %}
-	<h1>Product index</h1>
+	<div class="d-flex justify-content-center">
+		<h1>Tous les produits</h1>
+	</div>
+	<div class="d-flex justify-content-center">
+		<a class="btn btn-info mb-4" href="{{ path('admin_product_new') }}">Créer un nouveau produit</a>
+	</div>
+	<div class="row">
+		{% for p in products %}
+			<div class="col-3">
+				<div class="card">
+					<img src="{{ p.poster }}" class="img-fluid" alt="">
+					<div class="card-body">
+						<h4 class="card-title">{{ p.name }}
+							({{ p.price }}
+							&euro;)</h4>
 
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Name</th>
-				<th>Price</th>
-				<th>Slug</th>
-				<th>Poster</th>
-				<th>Short_desc</th>
-				<th>actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for product in products %}
-				<tr>
-					<td>{{ product.id }}</td>
-					<td>{{ product.name }}</td>
-					<td>{{ product.price }}</td>
-					<td>{{ product.slug }}</td>
-					<td>{{ product.poster }}</td>
-					<td>{{ product.shortDesc }}</td>
-					<td>
-						<a href="{{ path('admin_product_edit', {'slug': product.slug}) }}">edit</a>
-					</td>
-				</tr>
-			{% else %}
-				<tr>
-					<td colspan="7">no records found</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+						<span class="badge badge-info">
+							{{ p.category.name }}</span>
 
-	<a href="{{ path('admin_product_new') }}">Create new</a>
+						<p class="card-text">{{ p.shortDesc }}</p>
+						<div class="d-flex">
+							<form method="post" action="{{ path('admin_product_delete', {slug: p.slug}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer ce produit?');">
+								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ p.id) }}">
+								<button class="btn btn-danger btn-sm">Delete</button>
+							</form>
+							<a href="{{ path('admin_product_edit', {category_slug: p.category.slug, slug: p.slug}) }}" class="btn btn-success btn-sm ml-3">Modifier</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
 {% endblock %}

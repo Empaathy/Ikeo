@@ -9,8 +9,9 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th>Name</th>
-				<th>actions</th>
+				<th>Nom de la catégorie</th>
+				<th></th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -18,7 +19,10 @@
 				<tr>
 					<td>{{ category.name }}</td>
 					<td>
-						<a href="{{ path('admin_category_edit', {'slug': category.slug}) }}">Editer</a>
+						<a class="btn btn-primary btn-sm" href="{{ path('admin_category_edit', {'slug': category.slug}) }}">Editer</a>
+					</td>
+					<td>
+						<a class="btn btn-danger btn-sm" href="{{ path('admin_category_delete', {'slug': category.slug}) }}">Supprimer</a>
 					</td>
 				</tr>
 			{% else %}
@@ -29,5 +33,5 @@
 		</tbody>
 	</table>
 
-	<a href="{{ path('admin_category_new') }}">Créer une nouvelle catégorie</a>
+	<a class="btn btn-info" href="{{ path('admin_category_new') }}">Créer une nouvelle catégorie</a>
 {% endblock %}

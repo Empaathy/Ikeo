@@ -33,7 +33,6 @@ class ProductController extends AbstractController
             'category' => $category,
         ]);
     }
-
     /**
      * @Route("/{category_slug}/{slug}", name="product_show")
      */

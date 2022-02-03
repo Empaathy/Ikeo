@@ -21,7 +21,6 @@ class CategoryFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $slugger = new AsciiSlugger();
-        $faker = Factory::create('fr_FR');
 
         foreach (self::CATEGORIES as $key => $categoryName) {
             $category = new Category;

@@ -1,24 +1,28 @@
-<div class="d-flex flex-column vh-100 flex-shrink-0 p-3 text-white bg-dark" style="width: 250px;">
-	<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-		<svg class="bi me-2" width="40" height="32"></svg>
-		<span class="fs-4">Dashboard</span>
-	</a>
-	<hr>
-	<ul class="nav nav-pills flex-column mb-auto">
-		{% set links = [
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="#">Dashboard</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarColor02">
+			<ul class="navbar-nav me-auto">
+				{% set links = [
                 {'title': 'Accueil', 'path': 'admin_index', 'icon': 'fa fa-home'},
                 {'title': 'Produits', 'path': 'admin_product_index', 'icon': 'fab fa-product-hunt'},
                 {'title': 'Categories', 'path': 'admin_category_index', 'icon': 'fab fa-cuttlefish'},
-                {'title': 'Se déconnecter', 'path': 'app_logout', 'icon': 'fas fa-sign-out-alt'},
 		] %}
 
-		{% for link in links %}
-			<li class="nav-item">
-				<a href="{{ path(link.path) }}" class="nav-link {{ app.request.pathInfo == path(link.path) ? 'active' : 'text-white' }}">
-					<i class="{{ link.icon }}"></i>
-					<span class="ms-2">{{ link.title }}</span>
-				</a>
-			</li>
-		{% endfor %}
-	</ul>
-</div>
+				{% for link in links %}
+					<li class="nav-item">
+						<a href="{{ path(link.path) }}" class="nav-link {{ app.request.pathInfo == path(link.path) ? 'active' : 'text-blue' }}">
+							<i class="{{ link.icon }}"></i>
+							<span class="ms-2">{{ link.title }}</span>
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+			<a href="{{ path('app_logout') }}" class="btn btn-danger btn-sm ml-3">
+				<i class="fas fa-sign-out-alt"></i>
+				Se déconnecter</a>
+		</nav>

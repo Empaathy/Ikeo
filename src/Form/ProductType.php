@@ -2,15 +2,16 @@
 
 namespace App\Form;
 
-use App\Entity\Category;
 use App\Entity\Product;
-use Doctrine\DBAL\Types\FloatType;
-use Doctrine\DBAL\Types\TextType;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ProductType extends AbstractType
 {
@@ -19,24 +20,33 @@ class ProductType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => 'Nom',
-                'placeholder' => 'Tapez le nom du produit',
+                'attr' => [
+                    'placeholder' => 'Tapez le nom du produit',
+
+                ]
             ])
-            ->add('price', FloatType::class, [
+            ->add('price', MoneyType::class, [
                 'label' => 'Prix',
-                'palceholder' => 'Tapez le prix du produit en €'
+                'attr' => [
+                    'placeholder' => 'Tapez le prix du produit en €'
+                ]
             ])
             ->add('poster', TextType::class, [
                 'label' => 'Lien de l\'image',
             ])
-            ->add('short_desc', CKEditorType::class, [
+            ->add('short_desc', TextareaType::class, [
                 'label' => 'Courte description',
-                'placeholder' => 'Tapez une description courte mais parlante pour le visiteur',
-                'config_name' => 'light',
-                'attr' => ['rows' => '4'],
+                'attr' => [
+                    'rows' => '4',
+                    'placeholder' => 'Tapez une description courte mais parlante pour le visiteur',
+                ],
             ])
             ->add('category', EntityType::class, [
                 'label' => 'Catégorie',
-                'placeholder' => '-- Choisir une catégorie --',
+                'attr' => [
+                    'placeholder' => '-- Choisir une catégorie --',
+
+                ],
                 'class' => Category::class,
                 'choice_label' => 'name',
             ]);
