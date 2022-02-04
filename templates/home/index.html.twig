@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Nos produits phares
+	<h1 class="d-flex justify-content-center">Nos produits phares
 	</h1>
 	<div class="row">
 		{% for p in products %}
@@ -14,23 +14,22 @@
 		{% endfor %}
 	</div>
 	<hr>
-	<h2>Un service irréporochable!</h2>
-	<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, saepe!</p>
+	<h2 class="d-flex justify-content-center">Un service irréporochable!</h2>
+	<p class="d-flex justify-content-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, saepe!</p>
 	<div class="row">
 		{% include "components/_assurance.html.twig" with {
             'color': 'primary',
             'icon': 'fas fa-truck',
-            'text': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, voluptate.'
+            'text': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis vitae sequi ab repellat blanditiis numquam cum, alias veniam nam dolorem quia eveniet vero exercitationem maxime accusamus odit a recusandae voluptas animi tempore dolores et. Id ipsam dignissimos deleniti consectetur in consequuntur unde quasi minus laborum quia nulla, dolore expedita praesentium repellat porro minima cupiditate, culpa similique sapiente impedit. Explicabo asperiores sunt numquam cumque consectetur nihil ipsam pariatur labore minus impedit sed reiciendis, eveniet doloremque mollitia perspiciatis facilis sapiente, incidunt quia aliquid dicta modi odio dolore quos illum. Nulla cumque, consequuntur blanditiis maiores voluptatem porro voluptatibus repellendus ullam, libero voluptatum laudantium.'
         } %}
 		{% include "components/_assurance.html.twig" with {
             'color': 'success',
             'icon': 'fas fa-check',
-            'text': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, voluptate.'
+            'text': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis vitae sequi ab repellat blanditiis numquam cum, alias veniam nam dolorem quia eveniet vero exercitationem maxime accusamus odit a recusandae voluptas animi tempore dolores et. Id ipsam dignissimos deleniti consectetur in consequuntur unde quasi minus laborum quia nulla, dolore expedita praesentium repellat porro minima cupiditate, culpa similique sapiente impedit. Explicabo asperiores sunt numquam cumque consectetur nihil ipsam pariatur labore minus impedit sed reiciendis, eveniet doloremque mollitia perspiciatis facilis sapiente, incidunt quia aliquid dicta modi odio dolore quos illum. Nulla cumque, consequuntur blanditiis maiores voluptatem porro voluptatibus repellendus ullam, libero voluptatum laudantium.'
         } %}
 		{% include "components/_assurance.html.twig" with {
             'color': 'warning',
             'icon': 'fas fa-lock',
-            'text': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, voluptate.'
-        } %}
-	</div>
-{% endblock %}
+            'text': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis vitae sequi ab repellat blanditiis numquam cum, alias veniam nam dolorem quia eveniet vero exercitationem maxime accusamus odit a recusandae voluptas animi tempore dolores et. Id ipsam dignissimos deleniti consectetur in consequuntur unde quasi minus laborum quia nulla, dolore expedita praesentium repellat porro minima cupiditate, culpa similique sapiente impedit. Explicabo asperiores sunt numquam cumque consectetur nihil ipsam pariatur labore minus impedit sed reiciendis, eveniet doloremque mollitia perspiciatis facilis sapiente, incidunt quia aliquid dicta modi odio dolore quos illum. Nulla cumque, consequuntur blanditiis maiores voluptatem porro voluptatibus repellendus ullam, libero voluptatum laudantium.'
+		} %}
+	{% endblock %}

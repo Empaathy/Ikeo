@@ -1,0 +1,44 @@
+<h1>Votre panier</h1>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Produit</th>
+			<th>Prix</th>
+			<th>Quantité</th>
+			<th>Total</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for item in items %}
+			<tr>
+				<td>{{ item.product.name }}</td>
+				<td>{{ item.product.price }}
+					&euro;</td>
+				<td>
+					<a href="{{ path('cart_add', {'slug': item.product.slug}) }}? returnToCart=true" class="btn btn-sm btn-primary">
+						<i class="fas fa-plus"></i>
+					</a>
+					{{ item.qty }}
+					<a href="{{ path('cart_less', {'slug': item.product.slug}) }}" class="btn btn-sm btn-primary">
+						<i class="fas fa-minus"></i>
+					</a>
+				</td>
+				<td>{{ item.total }}
+					&euro;</td>
+				<td>
+					<a href="{{ path('cart_delete', {'slug': item.product.slug}) }} " class="btn btn-sm btn-danger">
+						<i class="fas fa-trash"></i>
+					</a>
+				</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="3">Total :</td>
+			<td colspan="2">{{ total }}
+				&euro;</td>
+		</tr>
+	</tfoot>
+</table>

@@ -7,6 +7,7 @@ use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,6 +25,7 @@ class ProductController extends AbstractController
      */
     public function index(ProductRepository $productRepository, CategoryRepository $categoryRepository): Response
     {
+
         return $this->render('admin/product/index.html.twig', [
             'products' => $productRepository->findAll(),
             'categories' => $categoryRepository->findAll(),

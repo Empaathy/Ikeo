@@ -13,7 +13,7 @@
 	<div class="row">
 		{% for p in products %}
 			<div class="col-3">
-				<div class="card">
+				<div class="card mb-3">
 					<img src="{{ p.poster }}" class="img-fluid" alt="">
 					<div class="card-body">
 						<h4 class="card-title">{{ p.name }}
@@ -24,12 +24,14 @@
 							{{ p.category.name }}</span>
 
 						<p class="card-text">{{ p.shortDesc }}</p>
-						<div class="d-flex">
+						<div class="d-flex justify-content-around">
 							<form method="post" action="{{ path('admin_product_delete', {slug: p.slug}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer ce produit?');">
 								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ p.id) }}">
-								<button class="btn btn-danger btn-sm">Delete</button>
+								<button class="btn btn-danger btn-sm">
+									<i class="fas fa-trash"></i>
+								</button>
 							</form>
-							<a href="{{ path('admin_product_edit', {category_slug: p.category.slug, slug: p.slug}) }}" class="btn btn-success btn-sm ml-3">Modifier</a>
+							<a href="{{ path('admin_product_edit', {category_slug: p.category.slug, slug: p.slug}) }}" class="btn btn-success btn-sm">Modifier</a>
 						</div>
 					</div>
 				</div>

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Product
+{% block title %}Nouveau produit
 {% endblock %}
 
 {% block body %}
@@ -8,5 +8,5 @@
 
 	{{ include('admin/product/_form.html.twig') }}
 
-	<a href="{{ path('admin_product_index') }}">back to list</a>
+	<a class="btn btn-dark mt-2" href="{{ path('admin_product_index') }}">Retour à liste des produits</a>
 {% endblock %}
